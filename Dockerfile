@@ -10,6 +10,7 @@ RUN pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple --t
 
 RUN rm -rf ~/.cache/pip
 
+# fix download issue, when visdom startup.
 RUN sed -i 's/download_scripts()/#download_scripts()/g' /usr/local/lib/python3.7/site-packages/visdom/server.py
 RUN rm -rf /usr/local/lib/python3.7/site-packages/visdom/static
 COPY static /usr/local/lib/python3.7/site-packages/visdom/static
